@@ -5,7 +5,7 @@ import re
 import unicodedata
 from urllib.parse import unquote
 from pathlib import Path
-from platformdirs import user_download_dir
+from platformdirs import user_downloads_dir
 from playwright.async_api import async_playwright
 
 def sanitize_filename(filename):
@@ -27,7 +27,7 @@ async def descargar_documentos(url, notificar=None):
     if notificar: await notificar(msg)
 
     # Crear carpeta SIGED_DOCUMENTOS dentro de la carpeta de Descargas del usuario
-    ruta_descarga = Path(user_download_dir()) / "SIGED_DOCUMENTOS"
+    ruta_descarga = Path(user_downloads_dir()) / "SIGED_DOCUMENTOS"
     os.makedirs(ruta_descarga, exist_ok=True)
 
     async with async_playwright() as p:

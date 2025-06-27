@@ -57,14 +57,11 @@ function App() {
           onChange={(e) => setUrl(e.target.value)} 
           required 
           placeholder="https://..." 
-        /><br /><br />
+        /><br />
 
-        <label>📁 Carpeta de destino:</label><br />
-        <input 
-          type="text" 
-          disabled 
-          placeholder="(Selector de carpeta no disponible aún)" 
-        /><br /><br />
+        <p style={{ fontStyle: 'italic', color: 'gray' }}>
+          📁 Los archivos se guardarán en la carpeta <strong>"SIGED_DOCUMENTOS"</strong> dentro de tu carpeta de descargas.
+        </p><br />
 
         <button type="submit">Iniciar Descarga</button>
       </form>
