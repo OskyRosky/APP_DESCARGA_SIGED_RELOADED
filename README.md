@@ -97,6 +97,7 @@ Esto abrirá la aplicación en http://localhost:5173 (o el puerto indicado por V
 Permite que, al ingresar una URL del sistema SIGED o ZHED, se descarguen automáticamente los archivos correspondientes a una carpeta localizada en el directorio de descargas principal del sistema operativo, llamada: SIGED_DOCUMENTOS.
 
 ⚙️ ¿Cómo funciona?
+
 	•	El usuario ingresa una URL en el frontend.
 	•	Se valida que comience con http o https.
 	•	El backend recibe la URL, lanza el proceso de descarga asincrónico utilizando Playwright.
@@ -107,6 +108,7 @@ Permite que, al ingresar una URL del sistema SIGED o ZHED, se descarguen automá
 🔧 Cambios realizados
 
 🧠 Backend (/backend/app)
+
 	•	Nuevo módulo creado: DESCARGA_SIGED.py
 	•	Función principal: descargar_documentos(url, ruta_descarga)
 	•	Utiliza Playwright para automatizar y realizar la descarga.
@@ -116,13 +118,14 @@ Permite que, al ingresar una URL del sistema SIGED o ZHED, se descarguen automá
 	•	Crea una tarea asincrónica con asyncio.create_task(...) para llamar a descargar_documentos(...).
 
 🎨 Frontend (/frontend/src)
+
 	•	Modificado: App.jsx
 	•	Se eliminó el input de “Carpeta de destino”.
 	•	Se agregó un mensaje fijo indicando que los archivos se descargarán en la carpeta SIGED_DOCUMENTOS dentro del directorio de descargas.
 	•	Estructura visual mantenida exactamente como estaba.
 
 📁 Scripts principales modificados
-_
+
 	•	app/DESCARGA_SIGED.py: Archivo nuevo. Contiene toda la lógica de descarga utilizando automatización con ruta inteligente.
 	•	app/routes.py: Se añadió una nueva ruta POST /descargar que invoca el módulo de descarga.
 	•	src/App.jsx: La interfaz de usuario fue adaptada para eliminar el input de carpeta de destino. En su lugar, ahora se muestra un mensaje estático indicando que los archivos se descargarán automáticamente en la carpeta SIGED_DOCUMENTOS.
