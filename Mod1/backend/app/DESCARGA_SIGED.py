@@ -4,6 +4,8 @@ import os
 import re
 import unicodedata
 from urllib.parse import unquote
+from pathlib import Path
+from platformdirs import user_download_dir
 from playwright.async_api import async_playwright
 
 def sanitize_filename(filename):
@@ -19,11 +21,13 @@ async def get_filename_from_headers(response):
         return sanitize_filename(match.group(1).strip())
     return None
 
-async def descargar_documentos(url, ruta_descarga, notificar=None):
+async def descargar_documentos(url, notificar=None):
     msg = "🚀 Iniciando Playwright..."
     print(msg)
     if notificar: await notificar(msg)
 
+    # Crear carpeta SIGED_DOCUMENTOS dentro de la carpeta de Descargas del usuario
+    ruta_descarga = Path(user_download_dir()) / "SIGED_DOCUMENTOS"
     os.makedirs(ruta_descarga, exist_ok=True)
 
     async with async_playwright() as p:
@@ -83,7 +87,7 @@ async def descargar_documentos(url, ruta_descarga, notificar=None):
                     file_name = f"Documento_{index+1}.pdf"
 
                 file_content = await file_response.body()
-                file_path = os.path.join(ruta_descarga, file_name)
+                file_path = ruta_descarga / file_name
                 with open(file_path, "wb") as f:
                     f.write(file_content)
 
@@ -106,5 +110,4 @@ async def descargar_documentos(url, ruta_descarga, notificar=None):
 # Para pruebas manuales desde consola
 if __name__ == "__main__":
     test_url = "https://cgrweb.cgr.go.cr/apex/f?p=CORRESPONDENCIA:1:::::P1_CONSECUTIVO:A88C108C63FD77A3C0E96E1EE8FC6802"
-    test_path = "/Users/sultan/Downloads/testdescarga"
-    asyncio.run(descargar_documentos(test_url, test_path))
+    asyncio.run(descargar_documentos(test_url))
