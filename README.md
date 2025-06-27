@@ -10,7 +10,7 @@ Este proyecto permite descargar automáticamente los documentos disponibles en e
 
 El propósito es permitir que cualquier funcionario o persona autorizada pueda ingresar una URL del sistema SIGED y obtener de forma automática todos los documentos asociados a esa URL, sin necesidad de realizar múltiples clics ni abrir ventanas manualmente.
 
-📁 Estructura General del Proyecto
+## 📁 Estructura General del Proyecto
 
 El proyecto se divide en dos carpetas principales:
 	•	frontend/: Contiene el código del cliente (interfaz gráfica con React).
@@ -89,6 +89,8 @@ Esto abrirá la aplicación en http://localhost:5173 (o el puerto indicado por V
 
 
 
+
+## 📁 Mod1: carpeta de descarga.
 
 
 
