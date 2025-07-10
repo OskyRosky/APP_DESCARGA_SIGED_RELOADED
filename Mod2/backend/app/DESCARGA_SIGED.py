@@ -46,10 +46,20 @@ async def descargar_documentos(url, notificar=None):
         if notificar: await notificar(msg)
 
         links = await page.locator("a").all()
-        download_links = [link for link in links if "apex.navigation.dialog" in str(await link.get_attribute("href"))]
+
+        # Obtener todos los enlaces
+        print(f"🔍 Total de enlaces encontrados: {len(links)}")
+        if notificar: await notificar(f"🔍 Total de enlaces encontrados: {len(links)}")
+
+        download_links = []
+        for link in links:
+            href = await link.get_attribute("href")
+            print(f"🔗 Analizando enlace: {href}")
+            if href and "apex.navigation.dialog" in href:
+                download_links.append(link)
 
         if not download_links:
-            msg = "❌ No se encontraron enlaces de descarga."
+            msg = "❌ No se encontraron enlaces de descarga válidos con 'apex.navigation.dialog'."
             print(msg)
             if notificar: await notificar(msg)
             await browser.close()
