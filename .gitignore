@@ -1,28 +1,70 @@
-# Entornos virtuales
+# -----------------------------
+# Ignorar entornos virtuales
+# -----------------------------
+venv/
+*/venv/
 **/venv/
-**/env/
 
-# Dependencias de Node
+# -----------------------------
+# Ignorar node_modules
+# -----------------------------
+node_modules/
+*/node_modules/
 **/node_modules/
 
-# Archivos temporales y binarios grandes
+# -----------------------------
+# Ignorar archivos de sistema
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Ignorar archivos de configuración de IDEs
+# -----------------------------
+.vscode/
+.idea/
+*.sw?
+
+# -----------------------------
+# Ignorar archivos de log y temporales
+# -----------------------------
 *.log
 *.tmp
 *.bak
-*.swp
-.DS_Store
+*.old
 
-# Directorios de distribución
-**/dist/
-**/build/
+# -----------------------------
+# Ignorar archivos grandes y binarios
+# -----------------------------
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.gz
+*.iso
+*.exe
+*.dll
+*.bin
 
-# Archivos compilados de Python
+# -----------------------------
+# Ignorar backups de notebooks
+# -----------------------------
+*.ipynb_checkpoints
+
+# -----------------------------
+# Ignorar archivos relacionados con Playwright y drivers
+# -----------------------------
+**/playwright/driver/**
+**/chromium/**
+
+# -----------------------------
+# Ignorar coverage y pruebas
+# -----------------------------
+coverage/
+htmlcov/
+.cache/
+.pytest_cache/
+*.cover
+*.pyc
 __pycache__/
-*.py[cod]
-
-# Directorios de IDEs y editores
-.vscode/
-.idea/
-
-# Archivos pesados como binarios de Playwright
-**/playwright/driver/node
