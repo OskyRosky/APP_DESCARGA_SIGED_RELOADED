@@ -131,6 +131,94 @@ Permite que, al ingresar una URL del sistema SIGED o ZHED, se descarguen automá
 	•	src/App.jsx: La interfaz de usuario fue adaptada para eliminar el input de carpeta de destino. En su lugar, ahora se muestra un mensaje estático indicando que los archivos se descargarán automáticamente en la carpeta SIGED_DOCUMENTOS.
 
 
+# 🚀Mod 3 SIGED Reloaded - Backend y Frontend con Docker
+
+Este proyecto levanta dos contenedores Docker: uno para el **backend (FastAPI)** y otro para el **frontend (React + Vite)**. El objetivo es ejecutar ambos servicios de forma aislada, replicable y ordenada desde cualquier máquina, incluyendo entornos como Windows Server.
+
+---
+
+## 📁 Estructura del proyecto
+
+SIGEDAPP/
+├── backend/
+│   ├── app/
+│   │   ├── init.py
+│   │   ├── routes.py
+│   │   └── DESCARGA_SIGED.py
+│   ├── main.py
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/
+│   ├── (archivos React + Vite)
+│   └── Dockerfile
+
+---
+
+## ⚙️ Requisitos previos
+
+- Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Tener este proyecto clonado o descargado en tu máquina.
+
+---
+
+## 🐳 Construcción de las imágenes Docker
+
+### 🔧 1. Construir imagen del **backend** (FastAPI)
+
+Abrí la terminal y posicionate en la carpeta `backend/`:
+
+```bash
+cd ~/CGR/2025/SIGEDAPP/Flask.App.SIGED/backend
+docker build -t descarga-backend .
+
+🎨 2. Construir imagen del frontend (React + Vite)
+
+En una nueva terminal, posicionate en la carpeta frontend/:
+
+cd ~/CGR/2025/SIGEDAPP/Flask.App.SIGED/frontend
+docker build -t descarga-frontend .
+
+▶️ Ejecución de contenedores Docker
+
+🚀 1. Levantar el contenedor del backend
+
+docker run -d --name backend-container -p 8000:8000 descarga-backend
+
+	•	Esto levanta el backend en http://localhost:8000
+	•	Se puede verificar con:
+
+docker logs backend-container
+
+🌐 2. Levantar el contenedor del frontend
+
+docker run -d --name frontend-container -p 80:80 descarga-frontend
+
+docker run -d --name frontend-container -p 80:80 descarga-frontend
+
+
+Esto levanta el frontend en http://localhost
+
+🧪 Verificación de servicios activos
+
+Para confirmar que ambos contenedores están corriendo:
+
+docker ps
+
+Deberías ver algo como:
+
+CONTAINER ID   IMAGE               PORTS                    NAMES
+abc123456789   descarga-backend    0.0.0.0:8000->8000/tcp   backend-container
+def987654321   descarga-frontend   0.0.0.0:80->80/tcp       frontend-container
+
+También podés verlos en Docker Desktop de forma gráfica.
+
+⸻
+
+✅ ¡Listo! Ambos servicios están activos y accesibles desde el navegador:
+	•	Frontend: http://localhost
+	•	Backend: http://localhost:8000
+
+
 
 
 
