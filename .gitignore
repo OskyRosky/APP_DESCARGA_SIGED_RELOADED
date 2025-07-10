@@ -1,70 +1,30 @@
-# -----------------------------
-# Ignorar entornos virtuales
-# -----------------------------
-venv/
-*/venv/
+# Ignorar entornos virtuales Python en cualquier carpeta
 **/venv/
+**/venv/**
 
-# -----------------------------
-# Ignorar node_modules
-# -----------------------------
-node_modules/
-*/node_modules/
+# Ignorar node_modules en cualquier carpeta
 **/node_modules/
+**/node_modules/**
 
-# -----------------------------
-# Ignorar archivos de sistema
-# -----------------------------
+# Archivos del sistema
 .DS_Store
-Thumbs.db
 
-# -----------------------------
-# Ignorar archivos de configuración de IDEs
-# -----------------------------
-.vscode/
-.idea/
-*.sw?
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
 
-# -----------------------------
-# Ignorar archivos de log y temporales
-# -----------------------------
+# Archivos temporales
 *.log
 *.tmp
-*.bak
-*.old
 
-# -----------------------------
-# Ignorar archivos grandes y binarios
-# -----------------------------
-*.zip
-*.tar
-*.tar.gz
-*.7z
-*.rar
-*.gz
-*.iso
-*.exe
-*.dll
-*.bin
+# Archivos y carpetas de entorno
+.env
+.env.*
 
-# -----------------------------
-# Ignorar backups de notebooks
-# -----------------------------
-*.ipynb_checkpoints
+# VSCode config
+.vscode/
 
-# -----------------------------
-# Ignorar archivos relacionados con Playwright y drivers
-# -----------------------------
-**/playwright/driver/**
-**/chromium/**
-
-# -----------------------------
-# Ignorar coverage y pruebas
-# -----------------------------
-coverage/
-htmlcov/
-.cache/
-.pytest_cache/
-*.cover
-*.pyc
-__pycache__/
+# Carpeta de respaldo (opcional, si no la querés subir)
+RESPALDO/
