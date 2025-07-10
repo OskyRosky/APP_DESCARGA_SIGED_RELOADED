@@ -1,0 +1,28 @@
+# Entornos virtuales
+**/venv/
+**/env/
+
+# Dependencias de Node
+**/node_modules/
+
+# Archivos temporales y binarios grandes
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# Directorios de distribución
+**/dist/
+**/build/
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# Directorios de IDEs y editores
+.vscode/
+.idea/
+
+# Archivos pesados como binarios de Playwright
+**/playwright/driver/node
