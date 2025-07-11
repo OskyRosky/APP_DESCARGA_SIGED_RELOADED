@@ -31,7 +31,7 @@ async def descargar_documentos(url, notificar=None):
     os.makedirs(ruta_descarga, exist_ok=True)
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False)
+        browser = await p.chromium.launch(headless=True)  # CAMBIO: navegador en segundo plano
         context = await browser.new_context(accept_downloads=True)
         page = await context.new_page()
 
